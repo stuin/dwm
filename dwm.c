@@ -267,6 +267,7 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root;
+static unsigned int scratchtag;
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
@@ -1661,6 +1662,7 @@ tag(const Arg *arg)
 	if (selmon->sel && arg->ui & TAGMASK) {
 		selmon->sel->tags = arg->ui & TAGMASK;
 		focus(NULL);
+		restack(selmon);
 		arrange(selmon);
 	}
 }
