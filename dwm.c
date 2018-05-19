@@ -2172,8 +2172,8 @@ view(const Arg *arg)
 	if (arg->ui & TAGMASK)
 		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
 	focus(NULL);
-	arrange(m);
 	attachclients(selmon);
+	arrange(selmon);
 }
 
 Client *
